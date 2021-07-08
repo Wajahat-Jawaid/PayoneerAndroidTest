@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout style="@style/AppTheme.Dialog.Container">
+
+        <TextView
+            android:id="@+id/title_text"
+            style="@style/AppTheme.Dialog.Title"
+            tools:text="@string/error_occurred" />
+
+        <TextView
+            android:id="@+id/msg_text"
+            style="@style/AppTheme.Dialog.Message" />
+
+        <View style="@style/AppTheme.SectionsSeparator" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancel_button"
+                style="@style/AppTheme.Dialog.Buttons"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@android:string/cancel"
+                android:textColor="@color/grey_light" />
+
+            <View
+                android:id="@+id/buttons_separator"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/divider" />
+
+            <Button
+                android:id="@+id/done_button"
+                style="@style/AppTheme.Dialog.Buttons"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="@android:string/ok"
+                android:textAllCaps="true" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">PayoneerAndroidTest</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="card_initial_digits">* * * *</string>
+    <string name="card_holder">Card Holder</string>
+
+    <!-- messages -->
+    <string name="error_occurred">Error Occurred!</string>
+    <string name="something_went_wrong">Something went wrong, please try later!</string>
+
+    <!-- Network errors -->
+    <string name="http_error_not_found">The resource you\'re looking for does not exist</string>
+    <string name="http_error_bad_request">Invalid request syntax</string>
+    <string name="http_error_forbidden">Access denied. Please provide admin credentials</string>
+    <string name="http_error_conflict">A resource with the same id already exists</string>
+    <string name="http_error_internal_error">Internal server error. Please try later!</string>
+    <string name="http_error_bad_gateway">We\'re experiencing some server issues. Please revert later!</string>
+
+    <!-- IOException -->
+    <string name="ioexception_message">Could not read resource from the local storage</string>
+</resources>

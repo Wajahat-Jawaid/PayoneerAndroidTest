@@ -1,0 +1,2 @@
+rootProject.name = "PayoneerAndroidTest"
+include ':app'
