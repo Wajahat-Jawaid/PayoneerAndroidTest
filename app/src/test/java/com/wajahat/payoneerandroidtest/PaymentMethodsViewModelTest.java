@@ -35,20 +35,21 @@ import static org.mockito.Mockito.when;
 @RunWith(JUnit4.class)
 public class PaymentMethodsViewModelTest {
 
-    @Rule
-    public RxImmediateSchedulerRule testSchedulerRule = new RxImmediateSchedulerRule();
-    @Rule
-    public InstantTaskExecutorRule rule = new InstantTaskExecutorRule();
+//    @Rule
+//    public RxImmediateSchedulerRule testSchedulerRule = new RxImmediateSchedulerRule();
+//    @Rule
+//    public InstantTaskExecutorRule rule = new InstantTaskExecutorRule();
 
     public WebService service = mock(WebService.class);
-    public PaymentMethodsRepository repository = new PaymentMethodsRepository(service);
+//    public PaymentMethodsRepository repository = new PaymentMethodsRepository(service);
+    public PaymentMethodsRepository repository = mock(PaymentMethodsRepository.class);
 
     @Test
     public void testPaymentMethods_Repo_Response() throws MalformedURLException {
         Networks networks = new Networks();
         networks.setApplicable(generateDummyApplicableNetworksList());
         GetPaymentMethodsResponse response = new GetPaymentMethodsResponse();
-        response.setNetworks(networks);
+        response.networks = networks;
         when(service.getPaymentMethods())
                 .thenReturn(Observable.just(response));
 

@@ -34,6 +34,10 @@ public abstract class BaseListAdapter<M> extends RecyclerView.Adapter<BaseListAd
         notifyDataSetChanged();
     }
 
+    public PublishSubject<M> getItemClickSubject() {
+        return itemClickSubject;
+    }
+
     public List<M> getItems() {
         return items;
     }

@@ -6,11 +6,13 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.gson.Gson;
 import com.wajahat.payoneerandroidtest.R;
 import com.wajahat.payoneerandroidtest.core.ErrorManager;
 import com.wajahat.payoneerandroidtest.data.model.ApplicableNetwork;
 import com.wajahat.payoneerandroidtest.databinding.FragmentListPaymentMethodsBinding;
 import com.wajahat.payoneerandroidtest.injection.Injectable;
+import com.wajahat.payoneerandroidtest.ui.paymentform.PaymentFormActivity;
 import com.wajahat.payoneerandroidtest.ui.shared.BaseFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +22,7 @@ import java.util.List;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Created by Wajahat Jawaid(wajahatjawaid@gmail.com)
@@ -27,6 +30,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class PaymentMethodsListFragment
         extends BaseFragment<FragmentListPaymentMethodsBinding, PaymentMethodsListViewModel>
         implements Injectable {
+
+    public static PaymentMethodsListFragment getInstance() {
+        return new PaymentMethodsListFragment();
+    }
 
     private CompositeDisposable disposables = new CompositeDisposable();
 
@@ -43,6 +50,7 @@ public class PaymentMethodsListFragment
                 .subscribe(
                         response -> {
                             hideLoadingAnimation();
+                            Timber.d("response: %s", new Gson().toJson(response));
                             // If response data has any issues, pass that to our ErrorManager
                             if (response.getNetworks() == null
                                     || response.getNetworks().getApplicable() == null
@@ -65,6 +73,17 @@ public class PaymentMethodsListFragment
         getViewDataBinding().recyclerviewPaymentMethods.setAdapter(adapter);
         adapter.updateContent(paymentMethods);
         // Handle the click listeners using adapter's PublishSubject here
+        disposables.add(
+                adapter.getItemClickSubject()
+                        .subscribe(selectedPaymentMethod -> {
+                            Timber.d("selectedPaymentMethod: %s", new Gson().toJson(selectedPaymentMethod));
+                            getContext().startActivity(
+                                    PaymentFormActivity.createPaymentFormIntent(
+                                            getContext(),
+                                            selectedPaymentMethod.getInputElements()
+                                    )
+                            );
+                        }));
     }
 
     private void hideLoadingAnimation() {

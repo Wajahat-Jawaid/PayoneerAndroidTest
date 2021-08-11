@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
+import com.jakewharton.rxbinding4.view.RxView;
 import com.wajahat.payoneerandroidtest.R;
 import com.wajahat.payoneerandroidtest.data.model.ApplicableNetwork;
 import com.wajahat.payoneerandroidtest.databinding.ListItemPaymentMethodBinding;
@@ -56,6 +57,11 @@ public class PaymentMethodsListAdapter extends BaseListAdapter<ApplicableNetwork
         else
             background = R.drawable.bg_credit_card_green;
         binding.setBackground(ContextCompat.getDrawable(binding.getRoot().getContext(), background));
+        RxView.clicks(binding.getRoot())
+                .subscribe(__ -> {
+                    getItemClickSubject().onNext(getItems().get(position));
+                    getItemClickSubject().onComplete();
+                });
     }
 
     /**

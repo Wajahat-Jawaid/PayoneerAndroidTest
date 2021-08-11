@@ -1,6 +1,8 @@
 package com.wajahat.payoneerandroidtest.data.model;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import lombok.Getter;
@@ -13,10 +15,12 @@ public class ApplicableNetwork {
 
     private final String label;
     private final Map<String, URL> links;
+    private final ArrayList<InputElement> inputElements;
 
-    public ApplicableNetwork(String label, Map<String, URL> links) {
+    public ApplicableNetwork(String label, Map<String, URL> links, ArrayList<InputElement> inputElements) {
         this.label = label;
         this.links = links;
+        this.inputElements = inputElements;
     }
 
     /**

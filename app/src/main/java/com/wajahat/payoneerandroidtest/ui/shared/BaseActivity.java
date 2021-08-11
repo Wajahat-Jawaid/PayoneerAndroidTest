@@ -1,6 +1,7 @@
 package com.wajahat.payoneerandroidtest.ui.shared;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,12 @@ public abstract class BaseActivity extends AppCompatActivity implements HasSuppo
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return dispatchingAndroidInjector;
     }
+
+    // region Messages
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+    // endregion
 
     /**
      * Abstract methods

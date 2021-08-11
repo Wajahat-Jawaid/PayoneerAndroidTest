@@ -1,11 +1,14 @@
 package com.wajahat.payoneerandroidtest;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.test.espresso.IdlingResource;
 
 import com.wajahat.payoneerandroidtest.ui.idlingresource.SimpleIdlingResource;
+import com.wajahat.payoneerandroidtest.ui.paymentmethods.PaymentMethodsListFragment;
 import com.wajahat.payoneerandroidtest.ui.shared.BaseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -13,6 +16,18 @@ public class MainActivity extends BaseActivity {
     @Nullable
     private SimpleIdlingResource mIdlingResource;
     private boolean resultHandled;
+
+    @Override
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setupFragments();
+    }
+
+    private void setupFragments() {
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.frame_layout, PaymentMethodsListFragment.getInstance())
+                .commit();
+    }
 
     @Override
     protected void onResume() {

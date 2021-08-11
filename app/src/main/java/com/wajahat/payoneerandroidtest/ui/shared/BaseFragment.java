@@ -18,8 +18,6 @@ import androidx.navigation.Navigation;
 
 import javax.inject.Inject;
 
-import timber.log.Timber;
-
 /**
  * Created by Wajahat Jawaid(wajahatjawaid@gmail.com)
  */
@@ -44,7 +42,7 @@ public abstract class BaseFragment<VDB extends ViewDataBinding, VM extends ViewM
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this, viewModelFactory).get(findViewModel());
-        navController = Navigation.findNavController(view);
+//        navController = Navigation.findNavController(view);
     }
 
     // region Messages

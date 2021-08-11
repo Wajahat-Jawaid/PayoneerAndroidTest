@@ -3,6 +3,7 @@ package com.wajahat.payoneerandroidtest.injection;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.wajahat.payoneerandroidtest.ui.paymentform.PaymentFormViewModel;
 import com.wajahat.payoneerandroidtest.ui.paymentmethods.PaymentMethodsListViewModel;
 
 import dagger.Binds;
@@ -19,6 +20,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(PaymentMethodsListViewModel.class)
     abstract ViewModel bindPaymentMethodsListViewModel(PaymentMethodsListViewModel viewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PaymentFormViewModel.class)
+    abstract ViewModel bindPaymentFormViewModel(PaymentFormViewModel viewModel);
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelFactory factory);

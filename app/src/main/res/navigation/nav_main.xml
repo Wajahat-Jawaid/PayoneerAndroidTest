@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@+id/splash_fragment">
+    app:startDestination="@+id/paymentMethodsListFragment">
 
     <fragment
         android:id="@+id/splash_fragment"
@@ -30,5 +30,25 @@
         android:id="@+id/paymentMethodsListFragment"
         android:name="com.wajahat.payoneerandroidtest.ui.paymentmethods.PaymentMethodsListFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_list_payment_methods" />
+        tools:layout="@layout/fragment_list_payment_methods">
+
+        <argument
+            android:name="payment_method"
+            app:argType="com.wajahat.payoneerandroidtest.data.model.Networks"
+            app:nullable="false" />
+
+        <action
+            android:id="@+id/action_paymentMethodsListFragment_to_paymentFormFragment"
+            app:destination="@id/paymentFormFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentFormFragment"
+        android:name="com.wajahat.payoneerandroidtest.ui.paymentform.PaymentFormFragment"
+        android:label="@string/payment_form"
+        tools:layout="@layout/fragment_payment_form" />
 </navigation>

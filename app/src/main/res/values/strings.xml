@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">PayoneerAndroidTest</string>
-    <string name="payment_methods">Payment Methods</string>
-    <string name="card_initial_digits">* * * *</string>
     <string name="card_holder">Card Holder</string>
+    <string name="card_initial_digits">* * * *</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="payment_form">Payment Form</string>
 
     <!-- messages -->
     <string name="error_occurred">Error Occurred!</string>
@@ -18,4 +19,7 @@
 
     <!-- IOException -->
     <string name="ioexception_message">Could not read resource from the local storage</string>
+
+    <!-- General Errors -->
+    <string name="error_input_elements">Error getting Input Elements</string>
 </resources>

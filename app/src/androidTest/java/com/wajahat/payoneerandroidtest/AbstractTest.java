@@ -26,8 +26,8 @@ class AbstractTest {
 
     @After
     public void unregisterIdlingResource() {
-//        if (mIdlingResource != null) {
-//            IdlingRegistry.getInstance().unregister(mIdlingResource);
-//        }
+        if (mIdlingResource != null) {
+            IdlingRegistry.getInstance().unregister(mIdlingResource);
+        }
     }
 }
